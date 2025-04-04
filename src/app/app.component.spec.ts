@@ -3,22 +3,22 @@ import { AppComponent } from './app.component';
 import { UserService } from './services/user.service';
 import { provideHttpClient } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
-import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+// import { ActivatedRoute } from '@angular/router';
+// import { of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 describe('AppComponent', () => {
-  const mockActivatedRoute = {
-      params: of({ id: '123' }), // Mocking route parameters
-      snapshot: {
-        params: { id: '123' } // Mocking snapshot parameters
-      }
-    };
+  // const mockActivatedRoute = {
+  //     params: of({ id: '123' }), // Mocking route parameters
+  //     snapshot: {
+  //       params: { id: '123' } // Mocking snapshot parameters
+  //     }
+  //   };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent, CommonModule],
       providers: [UserService, provideHttpClient(), AuthService,
-        { provide: ActivatedRoute, useValue: mockActivatedRoute },
+        // { provide: ActivatedRoute, useValue: mockActivatedRoute },
 
       ],
     }).compileComponents();

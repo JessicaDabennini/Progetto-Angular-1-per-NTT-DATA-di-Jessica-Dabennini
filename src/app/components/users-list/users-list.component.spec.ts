@@ -3,7 +3,7 @@ import { UsersListComponent } from './users-list.component';
 import { UserService } from '../../services/user.service';
 import { provideHttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router } from '@angular/router';

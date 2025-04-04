@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserDetailsComponent } from './user-details.component';
 import { UserService } from '../../services/user.service';
 import { provideHttpClient } from '@angular/common/http';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import {  RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -36,16 +36,16 @@ describe('User DetailsComponent', () => {
       providers: [
         { provide: UserService, useClass: MockUserService }, // Usa il mock per UserService
         provideHttpClient(),
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            snapshot: {
-              paramMap: {
-                get: () => '1', // Mock user ID
-              },
-            },
-          },
-        },
+        // {
+        //   provide: ActivatedRoute,
+        //   useValue: {
+        //     snapshot: {
+        //       paramMap: {
+        //         get: () => '1', // Mock user ID
+        //       },
+        //     },
+        //   },
+        // },
       ],
     }).compileComponents();
 

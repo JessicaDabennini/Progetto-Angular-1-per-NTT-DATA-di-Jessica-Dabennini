@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { Posts } from '../../models/post.model';
 import { Comments } from '../../models/comments.model';
-import { ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user.model';
 import { RouterLink } from '@angular/router';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -58,7 +57,6 @@ export class PostsComponent {
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
     private router: Router
     
   ){}
