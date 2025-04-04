@@ -1,0 +1,68 @@
+<nav class="navbar">
+  <a routerLink="/home" class="nav-link">Home</a>
+  <a routerLink="/posts" class="nav-link">Posts</a>
+  <a routerLink="/users" class="nav-link">Users</a>
+</nav>
+
+<div class="home">
+<div style="margin: 20px;">
+  <mat-form-field appearance="fill">
+    <mat-label>Search Posts</mat-label>
+    <input 
+      matInput 
+      [(ngModel)]="searchTerm" 
+      (input)="filterPosts()" 
+      placeholder="Type to search..."
+    >
+  </mat-form-field>
+  <button mat-raised-button style="margin-left: 15px; margin-bottom: 10px;" (click)="filterPosts()">Search</button>  
+  <h3 *ngIf="hasSearched">Results:</h3> <!-- Show results header only if a search has been performed -->
+  <div *ngIf="hasSearched">
+    <ul *ngIf="filteredPosts.length > 0"> <!-- Show results only if there are any -->
+      <li *ngFor="let post of filteredPosts" [attr.id]="'post-' + post.id" (click)="showPostDetails(post)">
+        <p><strong>Id: </strong>{{ post.id }}</p>
+        <p><strong>User:</strong> {{ post.user_id }}</p>
+        <p><strong>{{ post.title }}</strong></p>
+        <p>{{ post.body }}</p>
+        <button mat-flat-button (click)="showComments(post.id)">
+            Comments: {{ commentsCount[post.id] || 0 }}
+        </button>
+      </li>
+    </ul>
+    <button mat-raised-button (click)="closeBtn()">Close Research</button>
+    <p *ngIf="filteredPosts.length === 0">No results found.</p> <!-- Message if no results -->
+  </div>
+
+  <div class="user-card" *ngFor="let post of posts">
+    <p><strong>Id: </strong>{{ post.id }}</p>
+    <p><strong>User:</strong> {{ post.user_id }}</p>
+    <p><strong>{{ post.title }}</strong></p>
+    <p>{{ post.body }}</p>
+    <button mat-flat-button  (click)="showComments(post.id)">
+        Comments: {{ commentsCount[post.id] || 0 }}
+    </button>
+  </div>
+
+  <h5 style="margin-left: 30px; margin-top:30px">Add Post</h5>
+  <form class="example-form" (ngSubmit)="addPost()" #userForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput name="userName" [(ngModel)]="newPost.title" placeholder="Title" required>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Comment</mat-label>
+      <input matInput name="userEmail" [(ngModel)]="newPost.body" placeholder="Comment" required>
+    </mat-form-field>
+        
+    <button mat-raised-button style="margin-left: 10px; margin-bottom: 20px;" type="submit">Publish</button> 
+  </form>
+
+  <div style="text-align: center;" class="button-container">
+    <button 
+      mat-raised-button
+      style="color: red;" 
+      (click)="logout()">Logout</button>
+  </div>
+</div>
+</div>

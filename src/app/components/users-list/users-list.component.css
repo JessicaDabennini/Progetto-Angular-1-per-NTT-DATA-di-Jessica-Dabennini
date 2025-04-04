@@ -1,0 +1,131 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #07488d; /* Bootstrap primary color */
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Search Form Styles */
+.mat-form-field {
+  width: 100%;
+  padding: 15px; /* Optional: Space above the first input field */
+}
+
+button.mat-raised-button {
+  background-color: #07488d;
+  color: white;
+  margin-top: 10px;
+}
+
+button.mat-raised-button:hover {
+  background-color: #063b6b;
+}
+
+/* User Card Styles */
+.user-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-card p {
+  margin: 5px 0;
+}
+
+.user-card button {
+  margin-right: 5px;
+}
+
+/* Add User Form Styles */
+.example-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.home {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home h1 {
+  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.home h3 {
+  color: #044d9b;
+  margin-top: 20px;
+}
+
+.home p {
+  line-height: 1.6;
+  color: #555;
+  margin: 10px 0;
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .navbar {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .nav-link {
+      margin: 5px 0;
+  }
+
+  .user-card {
+      margin: 10px 0;
+  }
+
+  .example-form {
+      margin: 10px;
+      padding: 15px;
+  }
+
+  .home {
+    margin: 20px;
+    padding: 15px;
+}
+
+.home h1 {
+    font-size: 2em;
+}
+}

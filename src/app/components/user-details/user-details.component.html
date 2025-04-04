@@ -1,0 +1,32 @@
+<nav class="navbar">
+    <a routerLink="/home" class="nav-link">Home</a>
+    <a routerLink="/posts" class="nav-link">Posts</a>
+    <a routerLink="/users" class="nav-link">Users</a>
+</nav>
+<h3>User Details</h3>
+<div class="user-card" *ngIf="user">
+    <p>Id: {{ user.id }}</p>
+    <p>Name: {{ user.name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Genere: {{ user.gender }}</p>
+    <p>Status: {{ user.status }}</p><br>
+</div>
+
+<h3>Posts</h3>
+<div *ngIf="noPostsMessage; else postsList ">
+    <p>{{ noPostsMessage }}</p>
+</div>
+<ng-template #postsList>
+<div class="user-card" *ngFor="let post of posts">
+    <p>{{ post.title }}</p>
+    <p>{{ post.body }}</p><br>
+    <button (click)="showComments(post.id)">
+        Comments: {{ commentsCount[post.id] || 0 }}
+    </button>
+    <ul *ngIf="commentsCount[post.id] > 0">
+      <li *ngFor="let comment of comments[post.id]">
+        <strong>{{ comment.name }}:</strong> {{ comment.body }}
+      </li>
+    </ul>
+</div>
+</ng-template>

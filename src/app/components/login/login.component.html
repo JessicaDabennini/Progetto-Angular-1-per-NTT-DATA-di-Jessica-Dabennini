@@ -1,0 +1,38 @@
+
+<div class="home">
+    <div class="title">
+      <h1><strong>URBANUS</strong></h1>
+      <h5>...to the city and the urban community</h5>
+      <p>The application is free. </p>
+      <p>You can register and share your ideas and reports through posts and comments</p>   
+    </div>
+    <div class="login-container">
+      <h3>Login</h3>
+      <a href="https://gorest.co.in/consumer/login" target="_blank">
+        <p class="first-authentication">
+          To get your access token you must first authenticate on the GoRest platform
+        </p>
+      </a>
+      <form [formGroup]="loginFormControl" class="example-form" (ngSubmit)="onLogin()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Token</mat-label>
+          <input
+            class="token-input"
+            type="text"
+            matInput
+            formControlName="tokenControl"
+          />
+          <mat-error *ngIf="loginFormControl.get('tokenControl')?.hasError('required')">
+            Token is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          type="submit"
+          [disabled]="!loginFormControl.valid"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
