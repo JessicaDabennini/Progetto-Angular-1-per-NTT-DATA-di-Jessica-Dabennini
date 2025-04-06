@@ -6,12 +6,20 @@ import { User } from '../../models/user.model';
 import { Posts } from '../../models/post.model';
 import { RouterLink } from '@angular/router';
 import { Comments } from '../../models/comments.model';
+import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
+
 
 
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink,
+    MatButtonModule,
+    MatButtonToggleModule
+  ],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css',
 })
@@ -28,7 +36,8 @@ export class UserDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -54,7 +63,8 @@ export class UserDetailsComponent {
   loadCommentsCount(postId: number) {
     this.userService.getCommentsByPostId(postId).subscribe(comments => {
       this.commentsCount[postId] = comments.length; // Salva il numero di commenti per il post specifico
-    }, () => {
+    }, 
+    () => {
       this.commentsCount[postId] = 0; // Imposta a 0 in caso di errore
     });
   }
@@ -66,5 +76,9 @@ export class UserDetailsComponent {
         this.comments[postId] = comment; // Salva i commenti per il post specifico
       });
     }
+  }
+
+  logout(){
+    this.router.navigate(['/login']);
   }
 }

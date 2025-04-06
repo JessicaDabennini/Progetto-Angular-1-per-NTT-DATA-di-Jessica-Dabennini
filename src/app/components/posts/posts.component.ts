@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 
 
+
 @Component({
   selector: 'app-posts',
   standalone: true,
@@ -51,13 +52,13 @@ export class PostsComponent {
     hasSearched!: boolean;
     searchTerm: any;
     newPost:  Posts = { id: 0, user_id: 0, title: '', body: '' };
-  selectedPost: any;
+    selectedPost: any;
   
   
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
     
   ){}
 

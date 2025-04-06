@@ -3,6 +3,8 @@
     <a routerLink="/posts" class="nav-link">Posts</a>
     <a routerLink="/users" class="nav-link">Users</a>
 </nav>
+
+<div class="home">
 <h3>User Details</h3>
 <div class="user-card" *ngIf="user">
     <p>Id: {{ user.id }}</p>
@@ -20,13 +22,22 @@
 <div class="user-card" *ngFor="let post of posts">
     <p>{{ post.title }}</p>
     <p>{{ post.body }}</p><br>
-    <button (click)="showComments(post.id)">
+    <button mat-raised-button
+        (click)="showComments(post.id)">
         Comments: {{ commentsCount[post.id] || 0 }}
     </button>
     <ul *ngIf="commentsCount[post.id] > 0">
       <li *ngFor="let comment of comments[post.id]">
-        <strong>{{ comment.name }}:</strong> {{ comment.body }}
+        <strong>{{ comment.name }}:</strong> {{ comment.body }} 
       </li>
     </ul>
 </div>
 </ng-template>
+
+<div style="text-align: center;" class="button-container">
+    <button 
+     mat-raised-button
+     style="color: red;" 
+     (click)="logout()">Logout</button>
+  </div>
+</div>

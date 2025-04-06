@@ -1,27 +1,16 @@
-# 1ProgettoAngularJessicaDabennini
+# Urbanus App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+## Overview
+Urbanus App is an Angular application designed to improve the lives of people in urban centers by providing a platform for managing users and posts. The application allows users to log in, view user details, and manage posts and comments.
 
-## Development server
+## Features
+- **Login**: Secure login using a special token.
+- **User  List**: View a list of users with basic information, search functionality, and options to add or remove users.
+- **User  Detail Page**: View detailed information about a user, including their posts and comments.
+- **Post Management**: View all posts, search functionality, and the ability to add new posts and view comments.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Prerequisites
+- Node.js and npm installed on your machine.
+- Angular CLI installed globally. You can install it using:
+  ```bash
+  npm install -g @angular/cli

@@ -55,7 +55,7 @@ onLogin() {
 
     localStorage.setItem('userData', JSON.stringify(userData));
 
-    this.router.navigate(['/users']);
+    this.router.navigate(['/home']);
   }
 }
 
