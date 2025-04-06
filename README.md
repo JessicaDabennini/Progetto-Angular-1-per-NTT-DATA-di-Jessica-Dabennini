@@ -10,8 +10,9 @@ Urbanus App is an Angular application designed to improve the lives of people in
 - **Post Management**: View all posts, search functionality, and the ability to add new posts and view comments.
 
 ### Prerequisites
-- Node.js and npm installed on your machine.
-- Angular Material.
-- Angular CLI installed globally. You can install it using:
+- **Node.js**: Version 14 or higher. You can download it from [nodejs.org](https://nodejs.org/).
+- **npm**: This is installed automatically with Node.js.
+- **Angular Material**
+- **Angular CLI**: You can install it globally using the following command:
   ```bash
   npm install -g @angular/cli
