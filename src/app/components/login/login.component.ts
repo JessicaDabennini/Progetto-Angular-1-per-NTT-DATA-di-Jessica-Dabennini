@@ -7,8 +7,8 @@ import { Auth } from '../../models/auth.model';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'; // Import MatInputModule for input fields
-import { MatButtonModule } from '@angular/material/button'; // Import MatButtonModule for buttons
+import { MatInputModule } from '@angular/material/input'; 
+import { MatButtonModule } from '@angular/material/button'; 
 import { AuthService } from '../../services/auth.service';
 
 

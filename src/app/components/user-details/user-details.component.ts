@@ -41,7 +41,7 @@ export class UserDetailsComponent {
   ) {}
 
   ngOnInit() {
-    const userId = this.route.snapshot.paramMap.get('id'); // Get the user ID from the route
+    const userId = this.route.snapshot.paramMap.get('id'); 
     console.log('Fetching user with ID:', userId);
     this.userService.getUserById(userId).subscribe((user) => {
       console.log('User fetched:', user);
@@ -50,30 +50,29 @@ export class UserDetailsComponent {
 
     this.userService.getPostsByUserId(userId).subscribe((posts) => {
       console.log('Posts fetched:', posts);
-      this.posts = posts; // Store the posts directly
+      this.posts = posts; 
       this.posts.forEach(post => {
         this.loadCommentsCount(post.id);
        });
       if (this.posts.length === 0) {
-        this.noPostsMessage = 'This user has no posts.'; // Set the message
+        this.noPostsMessage = 'This user has no posts.'; 
       }
     });
   }
 
   loadCommentsCount(postId: number) {
     this.userService.getCommentsByPostId(postId).subscribe(comments => {
-      this.commentsCount[postId] = comments.length; // Salva il numero di commenti per il post specifico
+      this.commentsCount[postId] = comments.length; 
     }, 
     () => {
-      this.commentsCount[postId] = 0; // Imposta a 0 in caso di errore
+      this.commentsCount[postId] = 0; 
     });
   }
 
   showComments(postId: number) {
-    // Controlla se i commenti per questo post sono già stati caricati
     if (!this.comments[postId]) {
       this.userService.getCommentsByPostId(postId).subscribe((comment) => {
-        this.comments[postId] = comment; // Salva i commenti per il post specifico
+        this.comments[postId] = comment; 
       });
     }
   }

@@ -67,8 +67,8 @@ export class UsersListComponent {
     this.userService.getUsers().subscribe(data => {
       this.users = data;
       this.filteredUsers = this.users;
-      this.paginatedUsers = this.users; // Update filteredUsers
-      this.updatePaginatedUsers(); // Update paginatedUsers
+      this.paginatedUsers = this.users; 
+      this.updatePaginatedUsers(); 
 
     });
   }
@@ -101,17 +101,16 @@ addUser (): void {
   if (this.newUser .name && this.newUser .email) {
     const maxId = this.users.length > 0 ? Math.max(...this.users.map(user => user.id)) : 0;
     this.newUser .id = maxId + 1;
-    console.log('Adding new user:', this.newUser ); // Debug log
+    console.log('Adding new user:', this.newUser ); 
     this.users.push({ ...this.newUser  });
     this.filteredUsers = this.users;
     this.updatePaginatedUsers();
     this.newUser  = { id: 0, name: '', email: '', gender: '', status: false };
   }
 }
-  // Method to remove a user by ID
   removeUser (userId: number) {
-    this.users = this.users.filter(user => user.id !== userId); // Filter out the user
-    this.filteredUsers = this.users; // Update filtered users
+    this.users = this.users.filter(user => user.id !== userId); 
+    this.filteredUsers = this.users; 
     this.updatePaginatedUsers();   
   }
 

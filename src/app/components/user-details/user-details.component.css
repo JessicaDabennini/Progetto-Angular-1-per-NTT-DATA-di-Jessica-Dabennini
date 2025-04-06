@@ -30,7 +30,7 @@ body {
   /* Search Form Styles */
   .mat-form-field {
     width: 100%;
-    padding: 15px; /* Optional: Space above the first input field */
+    padding: 15px; 
   }
   
   button.mat-raised-button {

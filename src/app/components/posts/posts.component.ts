@@ -24,110 +24,105 @@ import {MatDividerModule} from '@angular/material/divider';
     RouterLink,
     MatIconModule,
     MatDividerModule,
-        MatInputModule,
-        MatFormField,
-        MatButtonModule,
-        MatLabel,
-        MatFormFieldModule,
-        FormsModule,
-        RouterLink,
-        MatButtonToggleModule
+    MatInputModule,
+    MatFormField,
+    MatButtonModule,
+    MatLabel,
+    MatFormFieldModule,
+    FormsModule,
+    RouterLink,
+    MatButtonToggleModule,
   ],
   templateUrl: './posts.component.html',
-  styleUrl: './posts.component.css'
+  styleUrl: './posts.component.css',
 })
 export class PostsComponent {
+  posts: Posts[] = [];
+  post: Posts | null = null;
 
-    posts: Posts[] = [];
-    post: Posts | null = null;
+  user: User[] | null = null;
+  users: { [key: number]: User } = {};
 
-    user: User[] | null = null;
-    users: { [key: number]: User } = {}; 
+  comment: Comments | null = null;
+  comments: { [key: number]: Comments[] } = {};
+  commentsCount: { [key: number]: number } = {};
 
-    comment: Comments | null = null;
-    comments: { [key: number]: Comments[] } = {}; // Mappa per memorizzare i commenti per post
-    commentsCount: { [key: number]: number } = {};
+  filteredPosts: Posts[] = [];
+  hasSearched!: boolean;
+  searchTerm: any;
+  newPost: Posts = { id: 0, user_id: 0, title: '', body: '' };
+  selectedPost: any;
 
-    filteredPosts: Posts[] = [];
-    hasSearched!: boolean;
-    searchTerm: any;
-    newPost:  Posts = { id: 0, user_id: 0, title: '', body: '' };
-    selectedPost: any;
-  
-  
+  constructor(private userService: UserService, private router: Router) {}
 
-  constructor(
-    private userService: UserService,
-    private router: Router,
-    
-  ){}
-
-  ngOnInit(){
-    this.userService. getAllPosts().subscribe(post => {
-      this.posts = post; 
-      this.posts.forEach(post => {
+  ngOnInit() {
+    this.userService.getAllPosts().subscribe((post) => {
+      this.posts = post;
+      this.posts.forEach((post) => {
         this.loadCommentsCount(post.id);
-       });
+      });
     });
-    
   }
 
   loadCommentsCount(postId: number) {
-    this.userService.getCommentsByPostId(postId).subscribe(comments => {
-      this.commentsCount[postId] = comments.length; // Salva il numero di commenti per il post specifico
-    }, () => {
-      this.commentsCount[postId] = 0; // Imposta a 0 in caso di errore
-    });
+    this.userService.getCommentsByPostId(postId).subscribe(
+      (comments) => {
+        this.commentsCount[postId] = comments.length; 
+      },
+      () => {
+        this.commentsCount[postId] = 0; 
+      }
+    );
   }
 
-
   showComments(postId: number) {
-    // Controlla se i commenti per questo post sono già stati caricati
     if (!this.comments[postId]) {
-      this.userService.getCommentsByPostId(postId).subscribe(comment => {
-        this.comments[postId] = comment; // Salva i commenti per il post specifico
+      this.userService.getCommentsByPostId(postId).subscribe((comment) => {
+        this.comments[postId] = comment; 
       });
     }
   }
 
   filterPosts() {
     if (this.searchTerm.trim() === '') {
-      this.hasSearched = false; // Close the search results if the search term is empty
-      this.filteredPosts = []; // Clear the filtered posts
+      this.hasSearched = false; 
+      this.filteredPosts = []; 
       return;
     }
 
-    // Your existing filtering logic here
-    this.filteredPosts = this.posts.filter(post => 
-      post.title.includes(this.searchTerm) || post.body.includes(this.searchTerm)
+    this.filteredPosts = this.posts.filter(
+      (post) =>
+        post.title.includes(this.searchTerm) ||
+        post.body.includes(this.searchTerm)
     );
 
-    this.hasSearched = true; // Set to true if there are results
+    this.hasSearched = true; 
   }
 
-  addPost (): void {
+  addPost(): void {
     if (this.newPost.title && this.newPost.body) {
-      const maxId = this.posts.length > 0 ? Math.max(...this.posts.map(post => post.id)) : 0;
+      const maxId =
+        this.posts.length > 0
+          ? Math.max(...this.posts.map((post) => post.id))
+          : 0;
       this.newPost.id = maxId + 1;
-      console.log('Adding new user:', this.newPost ); // Debug log
-      this.posts.push({ ...this.newPost  });
+      console.log('Adding new user:', this.newPost); 
+      this.posts.push({ ...this.newPost });
       this.filteredPosts = this.posts;
-      this.newPost  = { id: 0, user_id: 0, title: '', body: '' };
+      this.newPost = { id: 0, user_id: 0, title: '', body: '' };
     }
   }
 
+  showPostDetails(post: any) {
+    this.selectedPost = post;
+    this.hasSearched = true; 
+  }
 
-    showPostDetails(post: any) {
-      this.selectedPost = post;
-      this.hasSearched = true; // Assuming you want to show the results after selecting a post
-    }
-
-  closeBtn(){
+  closeBtn() {
     this.hasSearched = false;
   }
 
-  logout(){
+  logout() {
     this.router.navigate(['/login']);
   }
-
 }

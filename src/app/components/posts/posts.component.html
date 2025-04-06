@@ -16,9 +16,9 @@
     >
   </mat-form-field>
   <button mat-raised-button style="margin-left: 15px; margin-bottom: 10px;" (click)="filterPosts()">Search</button>  
-  <h3 *ngIf="hasSearched">Results:</h3> <!-- Show results header only if a search has been performed -->
+  <h3 *ngIf="hasSearched">Results:</h3> 
   <div *ngIf="hasSearched">
-    <ul *ngIf="filteredPosts.length > 0"> <!-- Show results only if there are any -->
+    <ul *ngIf="filteredPosts.length > 0"> 
       <li *ngFor="let post of filteredPosts" [attr.id]="'post-' + post.id" (click)="showPostDetails(post)">
         <p><strong>Id: </strong>{{ post.id }}</p>
         <p><strong>User:</strong> {{ post.user_id }}</p>
@@ -30,7 +30,7 @@
       </li>
     </ul>
     <button mat-raised-button (click)="closeBtn()">Close Research</button>
-    <p *ngIf="filteredPosts.length === 0">No results found.</p> <!-- Message if no results -->
+    <p *ngIf="filteredPosts.length === 0">No results found.</p> 
   </div>
 
   <div class="user-card" *ngFor="let post of posts">
