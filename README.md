@@ -11,6 +11,7 @@ Urbanus App is an Angular application designed to improve the lives of people in
 
 ### Prerequisites
 - Node.js and npm installed on your machine.
+- Angular Material.
 - Angular CLI installed globally. You can install it using:
   ```bash
   npm install -g @angular/cli

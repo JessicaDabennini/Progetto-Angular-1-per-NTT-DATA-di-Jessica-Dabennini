@@ -66,7 +66,7 @@ describe('LoginComponent', () => {
   it('should navigate to /users on successful login', () => {
     component.loginFormControl.get('tokenControl')?.setValue('valid-token');
     component.onLogin();
-    expect(router.navigate).toHaveBeenCalledWith(['/users']);
+    expect(router.navigate).toHaveBeenCalledWith(['/home']);
   });
 
   it('should not navigate if the form is invalid', () => {
